@@ -1,5 +1,6 @@
 var Axios = require('axios');
 var _ = require('lodash');
+var { fetchLights } = require('simple-hue-library');
 
 const TIMER_IN_SECONDS = (process.env.TIMER_IN_SECONDS) || 1;
 const API_USERNAME = (process.env.API_USERNAME) || 'newdeveloper';
@@ -7,24 +8,8 @@ const API_URL = (process.env.API_URL) || 'http://54.197.187.61';
 
 function main(i = 0, lights = []) {
     setTimeout(() => {
-        const url = `${API_URL}/api/${API_USERNAME}`;
-        Axios({
-            method: 'get',
-            url
-        })
-            .then((response) => {
-                var newLights = [];
-
-                _.map(response.data.lights, (light, id) => {
-                    var lightObj = {
-                        id,                        
-                        name: light.name,                                                
-                        on: light.state.on,
-                        brightness: light.state.bri
-                    }
-                    newLights.push(lightObj);
-                })
-
+        fetchLights(API_URL, API_USERNAME)
+            .then((newLights) => {
                 if (lights.length > 0) {
                     var x = 0;
                     // iterate through lights
@@ -50,7 +35,7 @@ function main(i = 0, lights = []) {
                     console.log(JSON.stringify(newLights, null, 2))
                 }
 
-                main(++i, newLights);                
+                main(++i, newLights);     
             })
             .catch(err => {
                 console.log(err);

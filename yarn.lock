@@ -32,3 +32,10 @@ lodash@^4.17.4:
 ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
+
+"simple-hue-library@git+ssh://git@github.com:rahimrahman/simple-hue-library.git":
+  version "0.0.2"
+  resolved "git+ssh://git@github.com:rahimrahman/simple-hue-library.git#e1064ebf46b098f45a6602b4ea4cb296e6592727"
+  dependencies:
+    axios "^0.16.2"
+    lodash "^4.17.4"
