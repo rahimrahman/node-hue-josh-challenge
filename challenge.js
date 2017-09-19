@@ -1,4 +1,3 @@
-var Axios = require('axios');
 var _ = require('lodash');
 var { fetchLights } = require('simple-hue-library');
 

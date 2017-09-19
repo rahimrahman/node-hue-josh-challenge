@@ -4,7 +4,6 @@
   "version": "0.0.1",
   "main": "challenge.js",
   "dependencies": {
-    "axios": "^0.16.2",
     "lodash": "^4.17.4",
     "simple-hue-library": "git+ssh://git@github.com:rahimrahman/simple-hue-library.git"
   }
