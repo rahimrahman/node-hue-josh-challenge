@@ -13,21 +13,14 @@ function main(i = 0, lights = []) {
                     var x = 0;
                     // iterate through lights
                     _.map(lights, light => {
-                        var changed = false;
                         var newLight = newLights[x];
-                        var reduceReturned = _.reduce(light, function(result, value, key) {
-                            if (!_.size(result)) {
-                                result = { id: light.id }
-                            };
+                        _.reduce(light, function(result, value, key) {
+                            result = { id: light.id }
                             if (!_.isEqual(value, newLight[key])) {
                                 result[key] = newLight[key];
-                                changed = true;
-                                return result;
+                                console.log(JSON.stringify(result, null, 2));
                             }
-                            return result;
                         }, {});
-
-                        if (changed) console.log(JSON.stringify(reduceReturned, null, 2));
                         x++;
                     });
                 } else {
