@@ -4,6 +4,7 @@
 ## Running the Application
 ```
 yarn
+
 node challenge.js
 ```
 
@@ -23,7 +24,7 @@ API_URL='http://54.197.187.61' API_USERNAME='newdeveloper' TIMER_IN_SECONDS=3 no
 
 Run the container and the application
 ```
-docker run -d r2integration/node-hue-josh-challenge:latest tail -f /dev/null
+docker run -it --rm r2integration/node-hue-josh-challenge:latest sh
 
 node challenge.js
 ```
@@ -35,9 +36,9 @@ Build the container
 docker build -t r2integration/node-hue-josh-challenge:latest .
 ```
 
-(Optional) Run the container on dev mode
+(Optional) Run the container on dev mode (so you can modify locally but run the challenge app on docker)
 ```
-docker run -d -v $(pwd):/usr/src/app r2integration/node-hue-josh-challenge:latest  tail -f /dev/null
+docker run -it --rm $(pwd):/usr/src/app r2integration/node-hue-josh-challenge:latest sh
 
 node challenge.js
 ```
